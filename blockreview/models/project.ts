@@ -3,5 +3,6 @@ export type Project = {
   name: string,
   description: string,
   logo: string,
-  contractAddress?: string
+  contractAddress: string
+  url?: string
 }

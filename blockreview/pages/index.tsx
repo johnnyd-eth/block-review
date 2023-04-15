@@ -5,9 +5,11 @@ import {
   ShieldCheckIcon,
 } from "@heroicons/react/24/outline";
 import type { NextPage } from "next";
-import { ReactNode } from "react";
+import Link from "next/link";
+import { ReactNode, useState } from "react";
 
 const Home: NextPage = () => {
+  const [search, setSearch] = useState<string>('')
   return (
     <>
       <div className="mt-20 text-center">
@@ -22,12 +24,19 @@ const Home: NextPage = () => {
             <input
               className="flex-1 outline-none placeholder:text-gray-300"
               placeholder="Search any project..."
+              onChange={(e) => {
+                setSearch(e.target.value)
+              }}
             ></input>
           </div>
 
-          <button className="w-36 rounded-lg bg-blue-500 py-5 px-10 text-white">
-            Search
-          </button>
+          <Link href={`/p/${search}`}>
+            <button 
+              className="w-36 rounded-lg bg-blue-500 py-5 px-10 text-white h-full"
+            >
+              Search
+            </button>
+          </Link>
         </div>
 
         <div className="mt-20 flex w-full justify-center gap-12 bg-blue-50 py-20 px-28">

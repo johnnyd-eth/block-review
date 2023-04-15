@@ -8,9 +8,7 @@ export function CoreAppWrapper({
   return (
     <main>
       <Nav />
-      {/* Page */}
       <div>{children}</div>
-      <Footer />
     </main>
   );
 }

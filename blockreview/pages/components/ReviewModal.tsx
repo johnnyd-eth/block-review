@@ -1,6 +1,8 @@
 import { Review } from "@/models/review"
-import { Form, InputNumber, Modal, Input } from "antd"
+import { Form, Modal, Input } from "antd"
+import { useState } from "react"
 import { useWallet } from "../hooks/Wallet"
+import { StarRating } from "./StarRating"
 
 const { TextArea } = Input
 
@@ -14,6 +16,8 @@ export function ReviewModal({
   onClose: () => void
 }) {
   const [reviewForm] = Form.useForm<Review>()
+  const [rating, setRating] = useState<number>(0)
+
   const {
     userAddress,
   } = useWallet()
@@ -22,19 +26,27 @@ export function ReviewModal({
     <Modal
       open={open}
       onOk={() => {
-        onSubmit(reviewForm.getFieldsValue(true))
+        onSubmit({
+          reviewer: userAddress, 
+          rating, 
+          comment: reviewForm.getFieldValue('comment')
+        } as Review)
+
       }}
       okButtonProps={{ disabled: !userAddress}}
       onCancel={onClose}
-      title={'Make a review'}
+      title={'Write review'}
     >
       <Form form={reviewForm}>
-        <Form.Item name='rating'>
-          <InputNumber min={1} max={5} step={1} />
-        </Form.Item>
-        <Form.Item name='comment'>
-          <TextArea rows={4} maxLength={256}/>
-        </Form.Item>
+        <div className='w-36 mb-10 mt-6'>
+          <div className='mb-2 font-medium'>Rating</div>
+          <StarRating initialRating={0} />
+        </div>
+          <div className='mb-2 font-medium'>Add a description</div>
+          <Form.Item name='comment'>
+            <TextArea rows={4} maxLength={256}/>
+          </Form.Item>
+
       </Form>
     </Modal>
   )

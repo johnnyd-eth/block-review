@@ -3,6 +3,13 @@ import Web3 from 'web3';
 import { blockReviewAbi, blockReviewContractAddress } from './blockReviewContract';
 import { processReviews } from './utils/reviews';
 
+// const walletPrivateKey = process.env.PRIVATE_KEY
+
+// Create a Web3 object and connect to an Ethereum node
+// export const web3 = new Web3('https://falling-alien-mountain.matic-testnet.discover.quiknode.pro/2e63d1366b2f248777013e46798c2e8fd112546c/');
+// if (walletPrivateKey) {
+//   web3.eth.accounts.wallet.add(walletPrivateKey)
+// }
 let web3: Web3;
 
 if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {
@@ -21,7 +28,7 @@ if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {
   web3 = new Web3(provider);
 }
 
-// Create an instance of the smart contract
+// Create an instancexe of the smart contract
 const contract = new web3.eth.Contract(blockReviewAbi, blockReviewContractAddress);
 
 async function requestAccount(): Promise<string> {
@@ -34,9 +41,9 @@ async function requestAccount(): Promise<string> {
   return accounts[0]
 }
 
-// Sees if a walletAddress has interacted with a contractAddress in the last 7 days
-async function hasInteractedWithContract(walletAddress: string, contractAddress: string) {
-  walletAddress = walletAddress.toLowerCase();
+// Sees if a walletAddress has interacted with a contractAddress in the last 7
+export async function hasInteractedWithContract(contractAddress: string) {
+  const walletAddress = await requestAccount()
   contractAddress = contractAddress.toLowerCase();
   
   const eventSignatures = contract.options.jsonInterface
@@ -47,7 +54,7 @@ async function hasInteractedWithContract(walletAddress: string, contractAddress:
   const blocksPerRequest = 10000; // Adjust this value based on your requirements and limitations
   const blocksPerDay = 24 * 60 * 60 / 15;
 
-  let fromBlock = latestBlock - (blocksPerDay * 7);
+  let fromBlock = latestBlock - (blocksPerDay * 31);
   let toBlock = fromBlock + blocksPerRequest;
 
   while (fromBlock < latestBlock) {
@@ -57,6 +64,7 @@ async function hasInteractedWithContract(walletAddress: string, contractAddress:
       address: contractAddress,
       topics: [eventSignatures],
     });
+    console.log('logs: ', logs)
     
     const userLogs = logs.filter((log) => {
       const topicsLength = log.topics.length
@@ -99,11 +107,9 @@ export async function addReview({
   const from = await requestAccount()
 
   let verified = true
-  if (projectContract) {
-    console.log('here!')
-    verified = await hasInteractedWithContract(from, projectContract)
-    console.log('verified: ', verified)
-  }
+  // if (projectContract) {
+    // verified = await hasInteractedWithContract(from, projectContract)
+  // }
 
   if (!verified) {
     console.log('Project not verified')

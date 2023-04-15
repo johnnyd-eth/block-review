@@ -1,18 +1,28 @@
 import { Project } from "@/models/project";
 import { Review } from "@/models/review";
 import { Button } from "antd";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { addReview, getReviews } from "../contracts";
+import { useWallet } from "../hooks/Wallet";
+import { getAverageRating } from "../utils/reviews";
+import { ReviewCard } from "./ReviewCard";
 import { ReviewModal } from "./ReviewModal";
+import { StarRating } from "./StarRating";
+import { VerifyingModal } from "./VerifyingModal";
 
 export function ProjectPage({
   project
 }: {
   project: Project
 }) {
-  const [modalOpen, setModalOpen] = useState<boolean>(false)
+  const [reviewModalOpen, setReviewModalOpen] = useState<boolean>(false)
+  const [verifyingModalOpen, setVerifyingModalOpen] = useState<boolean>(false)
   const [reviewsData, setReviewsData] = useState<Review[]>()
+
+  const {
+    userAddress,
+    connect
+  } = useWallet()
 
   useEffect(() => {
     if (!reviewsData) {
@@ -29,34 +39,67 @@ export function ProjectPage({
       comment: review.comment,
       rating: review.rating,
     })
+    setReviewModalOpen(false)
     console.log('Successfully added review. Tx receipt: ', txReceipt)
   }
 
+  const numReviews = reviewsData?.length ?? 0
+  const averageRating = reviewsData && reviewsData.length ? getAverageRating(reviewsData) : 0
+
   return (
     <div>
-      <div>
-        <h1>{project.name}</h1>
-        <Image src={project.logo} alt={`${project.name} logo`} width={100} height={100} />
-        <p>
-          {project.description}
-        </p>
-        <Button onClick={() => setModalOpen(true)}>Make a review</Button>
-        <ReviewModal 
-          open={modalOpen}
-          onClose={() => setModalOpen(false)}
-          onSubmit={submitForm}
-        />
-
-        <span>Reviews here:</span>
-        <div>
-          {reviewsData ? reviewsData.map((review: Review) => (
-            <div key={review.comment}>
-              <h3>{review.comment}</h3>
-              <p>{review.rating}</p>
-            </div>  
-          )) : <></>}
+      <section className='px-20 pt-12 pb-10'>
+        <div className='flex justify-between items-center'>
+          {/* LOGO, name, averageRating */}
+          <div className='flex justify-between'>
+            <div className='pr-7'>
+              <img src={project.logo} alt={`${project.name} logo`} width={112} height={112} />
+            </div>
+            <div>
+              <h1 className='text-4xl mb-2'>{project.name}</h1>
+              <div style={{ marginLeft: '-7px' }}>
+                <StarRating initialRating={averageRating} />
+              </div>
+              <div className='text-gray-400 text-xs mt-4 ml-1'>
+                <span>{averageRating.toFixed(2)} rating  |  {numReviews} reviews </span>
+              </div>
+            </div>
+          </div>
+          <Button onClick={() => {
+            if (userAddress) {
+              setVerifyingModalOpen(true)
+            } else {
+              connect()
+            }
+          }} className='bg-blue-500 text-white rounded-lg px-5 py-3 h-14 text-lg'>
+            <span>Write review</span>
+          </Button>
         </div>
-      </div>
+      </section>
+      <section className='px-20 pt-5 bg-gray-50 pb-20'>
+        <div>
+          {reviewsData && reviewsData.length ? reviewsData.map((review: Review) => (
+            <ReviewCard key={review.id} review={review} />
+          )) 
+          : <div className='mt-10 text-lg'>No reviews yet!</div>}
+        </div>
+      </section>
+      <ReviewModal 
+        open={reviewModalOpen}
+        onClose={() => setReviewModalOpen(false)}
+        onSubmit={submitForm}
+      />
+      {verifyingModalOpen ?
+        <VerifyingModal 
+          projectName={project.name}
+          contract={project.contractAddress}
+          onSuccess={() => {
+            setVerifyingModalOpen(false)
+            setReviewModalOpen(true)
+          }}
+          onClose={() => setVerifyingModalOpen(false)}
+        />
+      : null}
     </div>
   )
 }

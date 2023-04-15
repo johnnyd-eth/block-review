@@ -14,3 +14,7 @@ export function processReviews(reviewers: string[], ratings: number[], comments:
 
   return reviews
 }
+
+export function getAverageRating(reviews: Review[]): number {
+  return reviews.reduce((total, next) => total + Number(next.rating), 0) / reviews.length
+}

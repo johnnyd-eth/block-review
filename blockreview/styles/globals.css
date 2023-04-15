@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* StarRating.css */
+.star-rating {
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.star {
+  font-size: 24px;
+  margin-left: 3px;
+}
+
+.star svg {
+  fill: #ccc;
+}
+
+.star.filled svg {
+  fill: #5777EB;
+}
+
+.ant-btn {
+  @apply rounded-lg;
+  @apply px-5;
+  @apply py-3;
+  @apply h-14;
+  @apply text-lg;
+}
+
+.ant-btn-primary {
+  @apply bg-blue-500;
+  @apply text-white;
+}
+
+.ant-modal-title {
+  @apply text-3xl !important;
+}
+
+.ant-modal-content {
+  @apply p-8 !important;
+}
+
