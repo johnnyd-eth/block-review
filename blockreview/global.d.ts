@@ -1,8 +1,7 @@
+import { EthereumProvider } from 'web3-core';
 declare global {
   interface Window {
-    ethereum: {
-      request: (request: { method: string; params?: any[] }) => Promise<any>;
-    };
+    ethereum: EthereumProvider;
   }
 }
 

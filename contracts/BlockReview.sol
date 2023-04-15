@@ -19,9 +19,21 @@ contract BlockReview {
 
     uint public projectCount = 0;
 
+    // Define events
+    event ProjectAdded(uint indexed projectId, string name);
+    event ReviewAdded(
+        uint indexed projectId,
+        address indexed reviewer,
+        uint rating,
+        string comments
+    );
+
     function addProject(string memory _name) public {
         projectCount++;
         projects[projectCount] = Project(projectCount, _name, 0);
+
+        // Emit the event
+        emit ProjectAdded(projectCount, _name);
     }
 
     function addReview(
@@ -39,6 +51,9 @@ contract BlockReview {
             _rating,
             _comments
         );
+
+        // Emit the event
+        emit ReviewAdded(_projectId, msg.sender, _rating, _comments);
     }
 
     function getReviews(

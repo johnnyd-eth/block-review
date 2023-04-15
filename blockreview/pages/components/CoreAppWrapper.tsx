@@ -1,24 +1,16 @@
 import { PropsWithChildren } from "react";
-import WalletButton from "./Wallet/WalletButton";
+import { Nav } from "./Nav";
+import { Footer } from "./Footer";
 
 export function CoreAppWrapper({
-  children
+  children,
 }: PropsWithChildren<Record<never, never>>) {
   return (
     <main>
-      {/* Top Nav */}
-      <div className='flex'>
-        <div>
-          NAV ITEMS
-        </div>
-        <div>
-          <WalletButton />
-        </div>
-      </div>
+      <Nav />
       {/* Page */}
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
+      <Footer />
     </main>
-  )
+  );
 }

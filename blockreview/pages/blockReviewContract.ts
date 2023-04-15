@@ -1,7 +1,57 @@
 import { AbiItem } from 'web3-utils'
 
-export const blockReviewContractAddress = '0x2880dEb7391A41D00469e57DE972bB79253985D2'
+export const blockReviewContractAddress = '0x20265bad940A26d81193a3113087C96cc52eb2f1'
 export const blockReviewAbi = [
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "projectId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			}
+		],
+		"name": "ProjectAdded",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "projectId",
+				"type": "uint256"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "reviewer",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "rating",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "comments",
+				"type": "string"
+			}
+		],
+		"name": "ReviewAdded",
+		"type": "event"
+	},
 	{
 		"inputs": [
 			{

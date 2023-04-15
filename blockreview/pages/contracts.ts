@@ -1,15 +1,24 @@
 import { Review } from '@/models/review';
 import Web3 from 'web3';
 import { blockReviewAbi, blockReviewContractAddress } from './blockReviewContract';
-import { hasInteractedWithContract } from './utils/hasInteractedWithContract';
 import { processReviews } from './utils/reviews';
 
-const walletPrivateKey = process.env.PRIVATE_KEY
+let web3: Web3;
 
-// Create a Web3 object and connect to an Ethereum node
-export const web3 = new Web3('https://falling-alien-mountain.matic-testnet.discover.quiknode.pro/2e63d1366b2f248777013e46798c2e8fd112546c/');
-if (walletPrivateKey) {
-  web3.eth.accounts.wallet.add(walletPrivateKey)
+if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {
+  web3 = new Web3(window.ethereum);
+
+  // Request account access if needed
+  window.ethereum.enable().catch((error: string) => {
+    console.error('User denied account access:', error);
+  });
+} else {
+  console.log('using fallback')
+  // Use a fallback provider if MetaMask is not installed
+  const provider = new Web3.providers.HttpProvider(
+    'https://falling-alien-mountain.matic-testnet.discover.quiknode.pro/2e63d1366b2f248777013e46798c2e8fd112546c/'
+  );
+  web3 = new Web3(provider);
 }
 
 // Create an instance of the smart contract
@@ -25,7 +34,48 @@ async function requestAccount(): Promise<string> {
   return accounts[0]
 }
 
-// Example: Call a read-only function on the contract
+// Sees if a walletAddress has interacted with a contractAddress in the last 7 days
+async function hasInteractedWithContract(walletAddress: string, contractAddress: string) {
+  walletAddress = walletAddress.toLowerCase();
+  contractAddress = contractAddress.toLowerCase();
+  
+  const eventSignatures = contract.options.jsonInterface
+    .filter((item) => item.type === 'event')
+    .map((item) => web3.eth.abi.encodeEventSignature(item));
+
+  const latestBlock = await web3.eth.getBlockNumber();
+  const blocksPerRequest = 10000; // Adjust this value based on your requirements and limitations
+  const blocksPerDay = 24 * 60 * 60 / 15;
+
+  let fromBlock = latestBlock - (blocksPerDay * 7);
+  let toBlock = fromBlock + blocksPerRequest;
+
+  while (fromBlock < latestBlock) {
+    const logs = await web3.eth.getPastLogs({
+      fromBlock: fromBlock,
+      toBlock: Math.min(toBlock, latestBlock),
+      address: contractAddress,
+      topics: [eventSignatures],
+    });
+    
+    const userLogs = logs.filter((log) => {
+      const topicsLength = log.topics.length
+      const userAddressTopic = log.topics[topicsLength - 1]; // Assuming user address is the first indexed parameter
+      const userAddress = web3.eth.abi.decodeParameter('address', userAddressTopic);
+      return userAddress.toLowerCase() === walletAddress.toLowerCase();
+    });
+
+    if (userLogs.length > 0) {
+      return true;
+    }
+
+    fromBlock = toBlock + 1;
+    toBlock = fromBlock + blocksPerRequest;
+  }
+
+  return false;
+}
+
 export async function getReviews(projectId: number): Promise<Review[]> {
   const result = await contract.methods.getReviews(projectId).call();
   const reviewers = result['0']
@@ -50,6 +100,7 @@ export async function addReview({
 
   let verified = true
   if (projectContract) {
+    console.log('here!')
     verified = await hasInteractedWithContract(from, projectContract)
     console.log('verified: ', verified)
   }

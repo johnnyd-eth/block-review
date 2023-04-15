@@ -22,8 +22,8 @@ export function ProjectPage({
     }
   }, [reviewsData, project.id])
 
-  const submitForm = (review: Review) => {
-    const txReceipt = addReview({
+  const submitForm = async (review: Review) => {
+    const txReceipt = await addReview({
       projectId: project.id,
       projectContract: project.contractAddress,
       comment: review.comment,

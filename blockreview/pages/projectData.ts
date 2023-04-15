@@ -1,4 +1,5 @@
 import { Project } from "@/models/project";
+import { blockReviewContractAddress } from "./blockReviewContract";
 
 export const PROJECT_DATA: Record<string, Project> = {
   juicebox: {
@@ -18,6 +19,6 @@ export const PROJECT_DATA: Record<string, Project> = {
     name: 'Blockreview',
     description: "Polygon is the most proven way to build and scale your projects on Ethereum, the world's largest blockchain ecosystem.",
     logo: '/assets/juicebox-logo.png',
-    contractAddress: '0x2880dEb7391A41D00469e57DE972bB79253985D2'
+    contractAddress: blockReviewContractAddress
   }
 }
