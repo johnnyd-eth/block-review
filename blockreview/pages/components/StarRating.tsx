@@ -36,7 +36,7 @@ export const StarRating: React.FC<StarRatingProps> = ({
   };
 
   return (
-    <div className="star-rating">
+    <div className="star-rating w-36">
       {[1, 2, 3, 4, 5].map((index) => (
         <Star
           key={index}

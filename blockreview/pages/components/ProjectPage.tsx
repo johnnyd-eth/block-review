@@ -64,9 +64,7 @@ export function ProjectPage({
             </div>
             <div>
               <h1 className='text-4xl mb-2'>{project.name}</h1>
-              <div style={{ marginLeft: '-7px' }}>
-                <StarRating initialRating={averageRating} />
-              </div>
+              <StarRating initialRating={averageRating} />
               <div className='text-gray-400 text-xs mt-4 ml-1'>
                 <span>{averageRating.toFixed(2)} rating  |  {numReviews} reviews </span>
               </div>

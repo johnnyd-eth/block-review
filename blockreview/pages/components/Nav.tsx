@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import WalletButton from "./Wallet/WalletButton";
+import WalletButton from "./WalletButton";
 
 export function Nav() {
   return (

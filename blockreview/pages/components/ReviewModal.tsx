@@ -44,7 +44,7 @@ export function ReviewModal({
         <div className='flex justify-center mt-4 py-40'><Spin size="large" /></div>
       :
         <Form form={reviewForm}>
-          <div className='w-36 mb-10 mt-6'>
+          <div className='mb-10 mt-6'>
             <div className='mb-2 font-medium'>Rating</div>
             <StarRating initialRating={0} onStarClick={setRating} />
           </div>

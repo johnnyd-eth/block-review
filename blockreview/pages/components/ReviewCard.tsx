@@ -9,7 +9,7 @@ export function ReviewCard({review}: {review: Review}) {
           {review.reviewer}
         </div>
       </div>
-      <div className='w-36 mt-6'>
+      <div className='mt-6'>
         <StarRating initialRating={review.rating}/>
       </div>
       <h3 className='mt-9'>{review.comment}</h3>

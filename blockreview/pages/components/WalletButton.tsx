@@ -1,5 +1,4 @@
-import { useWallet } from "../../hooks/Wallet";
-import { LogoutOutlined } from "@ant-design/icons";
+import { useWallet } from "../hooks/Wallet";
 
 export default function WalletButton() {
   const { isConnected, connect } = useWallet();
