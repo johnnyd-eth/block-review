@@ -43,3 +43,7 @@
   @apply p-8 !important;
 }
 
+.ant-btn-default:not(:disabled):hover {
+  @apply text-white !important;
+}
+

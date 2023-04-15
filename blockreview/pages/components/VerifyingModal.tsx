@@ -42,7 +42,7 @@ export function VerifyingModal({
             <Spin size='large' />
           </div>
           <div className='mt-2'>
-            Verifying that you are an active user of the {projectName} contract!
+            Verifying that you are an active user of the <strong>{projectName}</strong> contract!
           </div>
         </div>
       : result === 'fail' ?

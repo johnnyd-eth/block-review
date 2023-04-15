@@ -45,10 +45,6 @@ async function requestAccount(): Promise<string> {
 export async function hasInteractedWithContract(contractAddress: string) {
   const walletAddress = await requestAccount()
   contractAddress = contractAddress.toLowerCase();
-  
-  const eventSignatures = contract.options.jsonInterface
-    .filter((item) => item.type === 'event')
-    .map((item) => web3.eth.abi.encodeEventSignature(item));
 
   const latestBlock = await web3.eth.getBlockNumber();
   const blocksPerRequest = 10000; // Adjust this value based on your requirements and limitations
@@ -57,6 +53,10 @@ export async function hasInteractedWithContract(contractAddress: string) {
   let fromBlock = latestBlock - (blocksPerDay * 31);
   let toBlock = fromBlock + blocksPerRequest;
 
+  const eventSignatures = contract.options.jsonInterface
+    .filter((item) => item.type === 'event')
+    .map((item) => web3.eth.abi.encodeEventSignature(item));
+
   while (fromBlock < latestBlock) {
     const logs = await web3.eth.getPastLogs({
       fromBlock: fromBlock,
@@ -64,11 +64,10 @@ export async function hasInteractedWithContract(contractAddress: string) {
       address: contractAddress,
       topics: [eventSignatures],
     });
-    console.log('logs: ', logs)
     
     const userLogs = logs.filter((log) => {
       const topicsLength = log.topics.length
-      const userAddressTopic = log.topics[topicsLength - 1]; // Assuming user address is the first indexed parameter
+      const userAddressTopic = log.topics[topicsLength - 1]; 
       const userAddress = web3.eth.abi.decodeParameter('address', userAddressTopic);
       return userAddress.toLowerCase() === walletAddress.toLowerCase();
     });

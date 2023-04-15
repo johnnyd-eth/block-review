@@ -8,6 +8,7 @@ import { getAverageRating } from "../utils/reviews";
 import { ReviewCard } from "./ReviewCard";
 import { ReviewModal } from "./ReviewModal";
 import { StarRating } from "./StarRating";
+import { SuccessModal } from "./SuccessModal";
 import { VerifyingModal } from "./VerifyingModal";
 
 export function ProjectPage({
@@ -17,6 +18,9 @@ export function ProjectPage({
 }) {
   const [reviewModalOpen, setReviewModalOpen] = useState<boolean>(false)
   const [verifyingModalOpen, setVerifyingModalOpen] = useState<boolean>(false)
+  const [successModalOpen, setSuccessModalOpen] = useState<boolean>(false)
+  const [txLink, setTxLink] = useState<string>()
+  
   const [reviewsData, setReviewsData] = useState<Review[]>()
 
   const {
@@ -33,14 +37,17 @@ export function ProjectPage({
   }, [reviewsData, project.id])
 
   const submitForm = async (review: Review) => {
+    console.log('submitForm')
     const txReceipt = await addReview({
       projectId: project.id,
       projectContract: project.contractAddress,
       comment: review.comment,
       rating: review.rating,
     })
-    setReviewModalOpen(false)
     console.log('Successfully added review. Tx receipt: ', txReceipt)
+    setTxLink(`https://mumbai.polygonscan.com/tx/${txReceipt.transactionHash}`)
+    setReviewModalOpen(false)
+    setSuccessModalOpen(true)
   }
 
   const numReviews = reviewsData?.length ?? 0
@@ -71,14 +78,14 @@ export function ProjectPage({
             } else {
               connect()
             }
-          }} className='bg-blue-500 text-white rounded-lg px-5 py-3 h-14 text-lg'>
+          }} className='bg-blue-500 hover:bg-blue-600 text-white hover:text-white rounded-lg px-5 py-3 h-14 text-lg'>
             <span>Write review</span>
           </Button>
         </div>
       </section>
       <section className='px-20 pt-5 bg-gray-50 pb-20'>
         <div>
-          {reviewsData && reviewsData.length ? reviewsData.map((review: Review) => (
+          {reviewsData && reviewsData.length ? [...reviewsData].reverse().map((review: Review) => (
             <ReviewCard key={review.id} review={review} />
           )) 
           : <div className='mt-10 text-lg'>No reviews yet!</div>}
@@ -100,6 +107,13 @@ export function ProjectPage({
           onClose={() => setVerifyingModalOpen(false)}
         />
       : null}
+      {successModalOpen && txLink ?
+        <SuccessModal 
+          txLink={txLink}
+          onClose={() => setSuccessModalOpen(false)}
+          projectName={project.name}
+        />
+      : null }
     </div>
   )
 }
