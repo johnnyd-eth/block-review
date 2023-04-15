@@ -1,7 +1,7 @@
 import { Review } from "@/models/review"
 import { Form, Modal, Input, Spin } from "antd"
 import { useState } from "react"
-import { useWallet } from "../hooks/Wallet"
+import { useWallet } from "../Wallet"
 import { StarRating } from "./StarRating"
 
 const { TextArea } = Input

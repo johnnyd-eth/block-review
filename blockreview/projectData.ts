@@ -1,5 +1,5 @@
 import { Project } from "@/models/project";
-import { blockReviewContractAddress } from "./blockReviewContract";
+import { blockReviewContractAddress } from "./pages/blockReviewContract";
 
 export const PROJECT_DATA: Record<string, Project> = {
   juicebox: {

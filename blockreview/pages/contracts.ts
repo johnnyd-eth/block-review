@@ -1,7 +1,7 @@
 import { Review } from '@/models/review';
 import Web3 from 'web3';
 import { blockReviewAbi, blockReviewContractAddress } from './blockReviewContract';
-import { processReviews } from './utils/reviews';
+import { processReviews } from '../utils/reviews';
 
 // const walletPrivateKey = process.env.PRIVATE_KEY
 

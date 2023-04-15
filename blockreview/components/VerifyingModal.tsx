@@ -1,6 +1,6 @@
 import { Modal, Spin } from "antd"
 import { useState } from "react"
-import { hasInteractedWithContract } from "../contracts"
+import { hasInteractedWithContract } from "../pages/contracts"
 import { StopOutlined } from '@ant-design/icons'
 
 export function VerifyingModal({
