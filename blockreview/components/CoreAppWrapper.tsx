@@ -6,7 +6,7 @@ export function CoreAppWrapper({
   children,
 }: PropsWithChildren<Record<never, never>>) {
   return (
-    <main>
+    <main className='font-body'>
       <Nav />
       <div>{children}</div>
     </main>

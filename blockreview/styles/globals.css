@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Beatrice';
+  src: url('/assets/fonts/Beatrice-Regular.woff2') format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('/assets/fonts/Beatrice-Medium.woff2') format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
 /* StarRating.css */
 .star-rating {
   display: flex;
