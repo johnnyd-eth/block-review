@@ -3,13 +3,6 @@ import Web3 from 'web3';
 import { blockReviewAbi, blockReviewContractAddress } from './blockReviewContract';
 import { processReviews } from '../utils/reviews';
 
-// const walletPrivateKey = process.env.PRIVATE_KEY
-
-// Create a Web3 object and connect to an Ethereum node
-// export const web3 = new Web3('https://falling-alien-mountain.matic-testnet.discover.quiknode.pro/2e63d1366b2f248777013e46798c2e8fd112546c/');
-// if (walletPrivateKey) {
-//   web3.eth.accounts.wallet.add(walletPrivateKey)
-// }
 let web3: Web3;
 
 if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {
@@ -41,13 +34,13 @@ async function requestAccount(): Promise<string> {
   return accounts[0]
 }
 
-// Sees if a walletAddress has interacted with a contractAddress in the last 7
+// Sees if a walletAddress has interacted with a contractAddress in the last 7 days
 export async function hasInteractedWithContract(contractAddress: string) {
   const walletAddress = await requestAccount()
   contractAddress = contractAddress.toLowerCase();
 
   const latestBlock = await web3.eth.getBlockNumber();
-  const blocksPerRequest = 10000; // Adjust this value based on your requirements and limitations
+  const blocksPerRequest = 10000; 
   const blocksPerDay = 24 * 60 * 60 / 15;
 
   let fromBlock = latestBlock - (blocksPerDay * 31);
@@ -91,7 +84,6 @@ export async function getReviews(projectId: number): Promise<Review[]> {
   return processReviews(reviewers, ratings, comments)
 }
 
-// Example: Call a function that requires a transaction to be sent
 export async function addReview({
   projectId,
   projectContract,
@@ -106,9 +98,6 @@ export async function addReview({
   const from = await requestAccount()
 
   let verified = true
-  // if (projectContract) {
-    // verified = await hasInteractedWithContract(from, projectContract)
-  // }
 
   if (!verified) {
     console.log('Project not verified')
