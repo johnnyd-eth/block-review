@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import StarIcon from './StarIcon';
+import { twMerge } from 'tailwind-merge';
 
 interface StarProps {
   filled: boolean;
@@ -29,6 +30,7 @@ export const StarRating: React.FC<StarRatingProps> = ({
   }, [initialRating]);
 
   const handleStarClick = (newRating: number) => {
+    if (!onStarClick) return
     setRating(newRating);
     if (onStarClick) {
       onStarClick(newRating);
@@ -36,7 +38,10 @@ export const StarRating: React.FC<StarRatingProps> = ({
   };
 
   return (
-    <div className="star-rating w-36">
+    <div className={twMerge(
+      "star-rating w-48",
+      onStarClick ? 'cursor-pointer' : 'cursor-default'
+    )}>
       {[1, 2, 3, 4, 5].map((index) => (
         <Star
           key={index}

@@ -7,7 +7,7 @@ export default function WalletButton() {
     return (
       <button
         onClick={() => connect()}
-        className="rounded-lg bg-blue-100 py-4 px-5 text-blue-500"
+        className="rounded-lg bg-swatch-100 py-3.5 px-6 text-swatch-400 hover:bg-swatch-200 transition"
       >
         Connect
       </button>

@@ -8,7 +8,7 @@ export function CoreAppWrapper({
   return (
     <main className='font-body'>
       <Nav />
-      <div>{children}</div>
+      <div className="flex justify-center">{children}</div>
     </main>
   );
 }

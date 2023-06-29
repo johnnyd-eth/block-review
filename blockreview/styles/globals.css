@@ -20,11 +20,10 @@
 .star-rating {
   display: flex;
   justify-content: space-around;
-  cursor: pointer;
 }
 
 .star {
-  font-size: 24px;
+  font-size: 30px;
   margin-left: 3px;
 }
 
@@ -33,7 +32,11 @@
 }
 
 .star.filled svg {
-  fill: #5777EB;
+  @apply fill-swatch-400;
+}
+
+button {
+  @apply transition;
 }
 
 .ant-btn {
@@ -42,10 +45,11 @@
   @apply py-3;
   @apply h-14;
   @apply text-lg;
+  @apply transition;
 }
 
 .ant-btn-primary {
-  @apply bg-blue-500;
+  @apply bg-swatch-400;
   @apply text-white;
 }
 

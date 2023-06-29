@@ -11,7 +11,7 @@ if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {
   // Request account access if needed
   window.ethereum.enable().catch((error: string) => {
     console.error('User denied account access:', error);
-  });
+  })
 } else {
   console.log('using fallback')
   // Use a fallback provider if MetaMask is not installed

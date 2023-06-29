@@ -1,4 +1,4 @@
-import { ProjectPage } from "../../components/ProjectPage"
+import { ProjectPage } from "../../components/ProjectPage/ProjectPage"
 import { PROJECT_DATA } from "../../projectData"
 
 export default function Polygon() {

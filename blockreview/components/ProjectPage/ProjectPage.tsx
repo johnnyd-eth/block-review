@@ -2,14 +2,19 @@ import { Project } from "@/models/project";
 import { Review } from "@/models/review";
 import { Button } from "antd";
 import { useEffect, useState } from "react";
-import { addReview, getReviews } from "../pages/contracts";
-import { useWallet } from "../Wallet";
-import { getAverageRating } from "../utils/reviews";
-import { ReviewCard } from "./ReviewCard";
-import { ReviewModal } from "./ReviewModal";
-import { StarRating } from "./StarRating";
-import { SuccessModal } from "./SuccessModal";
-import { VerifyingModal } from "./VerifyingModal";
+import { addReview, getReviews } from "../../pages/contracts";
+import { useWallet } from "../../Wallet";
+import { getAverageRating } from "../../utils/reviews";
+import { ReviewCard } from "../ReviewCard";
+import { ReviewModal } from "../ReviewModal";
+import { StarRating } from "../StarRating";
+import { SuccessModal } from "../SuccessModal";
+import { VerifyingModal } from "../VerifyingModal";
+import Image from "next/image";
+import { LinkIcon } from "@heroicons/react/24/outline";
+import { withoutHttp } from "@/utils/links";
+import { HeaderSection } from "./HeaderSection";
+import { ReviewsSection } from "./ReviewsSection";
 
 export function ProjectPage({
   project
@@ -22,11 +27,6 @@ export function ProjectPage({
   const [txLink, setTxLink] = useState<string>()
   
   const [reviewsData, setReviewsData] = useState<Review[]>()
-
-  const {
-    userAddress,
-    connect
-  } = useWallet()
 
   useEffect(() => {
     if (!reviewsData) {
@@ -54,41 +54,9 @@ export function ProjectPage({
   const averageRating = reviewsData && reviewsData.length ? getAverageRating(reviewsData) : 0
 
   return (
-    <div>
-      <section className='px-20 pt-12 pb-10'>
-        <div className='flex justify-between items-center'>
-          {/* LOGO, name, averageRating */}
-          <div className='flex justify-between'>
-            <div className='pr-7'>
-              <img src={project.logo} alt={`${project.name} logo`} width={112} height={112} />
-            </div>
-            <div>
-              <h1 className='text-4xl mb-2'>{project.name}</h1>
-              <StarRating initialRating={averageRating} />
-              <div className='text-gray-400 text-xs mt-4 ml-1'>
-                <span>{averageRating.toFixed(2)} rating  |  {numReviews} reviews </span>
-              </div>
-            </div>
-          </div>
-          <Button onClick={() => {
-            if (userAddress) {
-              setVerifyingModalOpen(true)
-            } else {
-              connect()
-            }
-          }} className='bg-blue-500 hover:bg-blue-600 text-white hover:text-white rounded-lg px-5 py-3 h-14 text-lg'>
-            <span>Write review</span>
-          </Button>
-        </div>
-      </section>
-      <section className='px-20 pt-5 bg-gray-50 pb-20'>
-        <div>
-          {reviewsData && reviewsData.length ? [...reviewsData].reverse().map((review: Review) => (
-            <ReviewCard key={review.id} review={review} />
-          )) 
-          : <div className='mt-10 text-lg'>No reviews yet!</div>}
-        </div>
-      </section>
+    <div className='mt-3 w-full'>
+      <HeaderSection project={project} numReview={numReviews} averageRating={averageRating} />
+      <ReviewsSection reviewsData={reviewsData} />
       <ReviewModal 
         open={reviewModalOpen}
         onClose={() => setReviewModalOpen(false)}

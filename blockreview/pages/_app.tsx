@@ -22,7 +22,8 @@ init({
     polygonNetwork
   ],
   appMetadata: {
-    icon: '/assets/juice-logo-icon_black.png',
+    icon: '/assets/blockreview-logo-small.png',
+    logo: '/assets/blockreview-logo1.png',
     name: 'Blockreview',
     description: 'Trustless on-chain reviews.',
   },
