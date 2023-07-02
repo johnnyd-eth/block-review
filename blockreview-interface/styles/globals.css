@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --onboard-modal-z-index: 2000;
+}
+
+@font-face {
+  font-family: 'Beatrice';
+  src: url('/assets/fonts/Beatrice-Regular.woff2') format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('/assets/fonts/Beatrice-Medium.woff2') format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+div {
+  @apply font-body;
+}
+
+.ant-input {
+  @apply font-body;
+  @apply px-3.5;
+  @apply py-2.5;
+}
+
+/* StarRating.css */
+.star-rating {
+  display: flex;
+  justify-content: space-around;
+}
+
+.star {
+  font-size: 30px;
+  margin-left: 3px;
+}
+
+.star svg {
+  fill: #ccc;
+}
+
+.star.filled svg {
+  @apply fill-swatch-400;
+}
+
+.star.hover-filled svg {
+  @apply fill-swatch-100;
+}
+
+button {
+  @apply transition;
+}
+
+.ant-btn {
+  @apply rounded-lg;
+  @apply px-5;
+  @apply py-3;
+  @apply h-14;
+  @apply text-lg;
+  @apply transition;
+}
+
+.ant-btn-primary {
+  @apply bg-swatch-400;
+  @apply text-white;
+  @apply hover:bg-swatch-500 !important;
+}
+
+.ant-modal-wrap, .ant-modal-mask {
+  z-index: 19 !important;
+}
+.ant-modal-title {
+  @apply text-2xl !important;
+  @apply font-body;
+}
+
+.ant-modal-content {
+  @apply p-8 !important;
+}
+
+/* Web3 Onboard image */
+.modal .icon-container {
+  height: 25px !important;
+}
+
+.ant-btn-default:not(:disabled):hover {
+  @apply text-white !important;
+}
+
