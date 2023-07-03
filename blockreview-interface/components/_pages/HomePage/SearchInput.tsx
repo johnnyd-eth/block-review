@@ -3,7 +3,6 @@ import Link from "next/link";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Project } from "@/models/project";
 
-
 interface SearchProps {
   projectData: Record<string, Project>;
 }
@@ -11,8 +10,8 @@ interface SearchProps {
 export function SearchInput({ projectData }: SearchProps) {
   const [search, setSearch] = useState<string>('')
 
-  const searchResults = Object.values(projectData)
-    .filter((project) =>
+  const searchResults = Object.entries(projectData)
+    .filter(([key, project]) =>
       project.name.toLowerCase().includes(search.toLowerCase())
     );
 
@@ -34,10 +33,7 @@ export function SearchInput({ projectData }: SearchProps) {
 
         {search && (
           <div className='mt-1 flex flex-col w-full max-w-xl gap-1 absolute z-10'>
-            {Object.entries(projectData)
-              .filter(([key]) => 
-                key.includes(search)
-              )
+            {searchResults
               .map(([key, project]) => (
                 <Link key={project.id} href={`/p/${key}`} passHref>
                   <div className="flex items-center gap-4 p-3 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 cursor-pointer">
@@ -53,4 +49,3 @@ export function SearchInput({ projectData }: SearchProps) {
     </div>
   );
 }
-
