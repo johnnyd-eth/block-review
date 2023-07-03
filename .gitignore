@@ -1,5 +1,4 @@
 .vercel
 /backend/node_modules*
-/backend/artifacts*
 /backend/cache*
 /backend/.env
