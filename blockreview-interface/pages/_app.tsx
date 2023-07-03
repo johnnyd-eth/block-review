@@ -22,8 +22,8 @@ init({
     polygonNetwork
   ],
   appMetadata: {
-    icon: '/assets/blockreview-logo-small.png',
-    logo: '/assets/blockreview-logo1.png',
+    icon: '/assets/project-logos/blockreview-logo-small.png',
+    logo: '/assets/project-logos/blockreview-logo-walletconnect.png',
     name: 'Blockreview',
     description: 'Trustless on-chain reviews.',
   },

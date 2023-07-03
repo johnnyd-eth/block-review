@@ -9,6 +9,8 @@ import {
 import type { NextPage } from "next";
 import Link from "next/link";
 import { useState } from "react";
+import { SearchInput } from "@/components/pages/HomePage/SearchInput";
+import { PROJECT_DATA } from "@/projectData";
 
 const Home: NextPage = () => {
   const [search, setSearch] = useState<string>('')
@@ -20,26 +22,8 @@ const Home: NextPage = () => {
           Browse and write reviews for every Web3 project, ever.
         </h2>
 
-        <div className="mx-auto mt-12 flex w-full max-w-2xl gap-3">
-          <div className="flex w-full items-center gap-2 rounded-lg border border-gray-300 p-5">
-            <MagnifyingGlassIcon className="h-6 w-6 text-gray-400" />
-            <input
-              className="flex-1 outline-none placeholder:text-gray-400"
-              placeholder="Search any project..."
-              onChange={(e) => {
-                setSearch(e.target.value)
-              }}
-            ></input>
-          </div>
+        <SearchInput projectData={PROJECT_DATA} />
 
-          <Link href={`/p/${search}`}>
-            <button 
-              className="w-36 rounded-lg bg-swatch-400 hover:bg-swatch-500 py-5 px-10 text-white h-full"
-            >
-              Search
-            </button>
-          </Link>
-        </div>
       </div>
       <div className="mt-20 flex w-full justify-center gap-12 bg-swatch-50 py-20 px-28">
         <InfoCard title="Trustless" icon={<ShieldCheckIcon />}>
