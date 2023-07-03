@@ -1,19 +1,15 @@
 import { Footer } from "@/components/ui/Footer";
-import { InfoCard } from "@/components/pages/HomePage/InfoCard";
+import { InfoCard } from "@/components/_pages/HomePage/InfoCard";
 import {
   ArrowTrendingDownIcon,
   CheckBadgeIcon,
-  MagnifyingGlassIcon,
   ShieldCheckIcon,
 } from "@heroicons/react/24/outline";
 import type { NextPage } from "next";
-import Link from "next/link";
-import { useState } from "react";
-import { SearchInput } from "@/components/pages/HomePage/SearchInput";
+import { SearchInput } from "@/components/_pages/HomePage/SearchInput";
 import { PROJECT_DATA } from "@/projectData";
 
 const Home: NextPage = () => {
-  const [search, setSearch] = useState<string>('')
   return (
     <div className='flex flex-col items-center'>
       <div className="mt-20 text-center max-w-3xl">
