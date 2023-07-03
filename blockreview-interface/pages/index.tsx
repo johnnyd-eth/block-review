@@ -10,6 +10,7 @@ import { SearchInput } from "@/components/_pages/HomePage/SearchInput";
 import { PROJECT_DATA } from "@/projectData";
 
 const Home: NextPage = () => {
+  const realUsers = "Real users adding real reviews – verifies wallets actively using projects' smart contracts."
   return (
     <div className='flex flex-col items-center'>
       <div className="mt-20 text-center max-w-3xl">
@@ -23,12 +24,10 @@ const Home: NextPage = () => {
       </div>
       <div className="mt-20 flex w-full justify-center gap-12 bg-swatch-50 py-20 px-28">
         <InfoCard title="Trustless" icon={<ShieldCheckIcon />}>
-          Completely decentralised to ensure the credibility of reviews. Never
-          to be deleted.
+          Reviews directly stored on and retrieved from the Polygon blockchain - no central authority involved. 
         </InfoCard>
         <InfoCard title="Verified Users" icon={<CheckBadgeIcon />}>
-          Real users adding real reviews – verified by Polygon’s trustless ID
-          system.
+          {realUsers}
         </InfoCard>
         <InfoCard title="Low Gas" icon={<ArrowTrendingDownIcon />}>
           Take advantage of low gas fees with Polygon’s low gas blockchain.

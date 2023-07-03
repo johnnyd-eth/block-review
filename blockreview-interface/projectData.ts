@@ -81,4 +81,84 @@ export const PROJECT_DATA: Record<string, Project> = {
     url: 'https://www.synthetix.io',
     contractAddress: '0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f'
   },
+  curveFinance: {
+    id: 11,
+    name: 'Curve Finance',
+    description: 'Curve is an exchange liquidity pool on Ethereum designed for efficient stablecoin trading.',
+    logo: '/assets/project-logos/curveFinance-logo.png',
+    url: 'https://curve.fi',
+    contractAddress: '0xd533a949740bb3306d119cc777fa900ba034cd52'
+  },
+  balancer: {
+    id: 12,
+    name: 'Balancer',
+    description: 'Balancer allows anyone to create or add liquidity to customizable pools and earn trading fees.',
+    logo: '/assets/project-logos/balancer-logo.png',
+    url: 'https://balancer.fi',
+    contractAddress: '0xba100000625a3754423978a60c9317c58a424e3d'
+  },
+  sushiSwap: {
+    id: 13,
+    name: 'SushiSwap',
+    description: 'SushiSwap is an automated market making (AMM) decentralized exchange (DEX) currently on the Ethereum blockchain.',
+    logo: '/assets/project-logos/sushiSwap-logo.png',
+    url: 'https://sushi.com',
+    contractAddress: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2'
+  },
+  alchemix: {
+    id: 14,
+    name: 'Alchemix',
+    description: 'Alchemix is a future-yield backed synthetic asset platform and community DAO.',
+    logo: '/assets/project-logos/alchemix-logo.png',
+    url: 'https://alchemix.fi',
+    contractAddress: '0xdBdb4d16EdA451D0503b854CF79D55697F90c8DF'
+  },
+  bancor: {
+    id: 15,
+    name: 'Bancor',
+    description: 'Bancor is an on-chain liquidity protocol that enables automated, decentralized exchange on Ethereum and across blockchains.',
+    logo: '/assets/project-logos/bancor-logo.png',
+    url: 'https://bancor.network',
+    contractAddress: '0x1f573d6fb3f13d689ff844b4ce37794d79a7ff1c'
+  },
+  oneinch: {
+    id: 16,
+    name: '1inch',
+    description: '1inch is a decentralized exchange aggregator that sources liquidity from various exchanges to provide the best trade rates.',
+    logo: '/assets/project-logos/1inch-logo.png',
+    url: 'https://1inch.io',
+    contractAddress: '0x111111111117dc0aa78b770fa6a738034120c302'
+  },
+  pickleFinance: {
+    id: 17,
+    name: 'Pickle Finance',
+    description: 'Pickle Finance is a DeFi protocol aiming to bring stablecoins closer to their pegs by using farming incentives, rewards, and penalties.',
+    logo: '/assets/project-logos/pickleFinance-logo.png',
+    url: 'https://pickle.finance',
+    contractAddress: '0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5'
+  },
+  kyberNetwork: {
+    id: 18,
+    name: 'Kyber Network',
+    description: 'Kyber Network is connecting the fragmented tokenized world by enabling instant and seamless transactions between platforms, ecosystems.',
+    logo: '/assets/project-logos/kyberNetwork-logo.png',
+    url: 'https://kyber.network',
+    contractAddress: '0xdd974d5c2e2928dea5f71b9825b8b646686bd200'
+  },
+  ren: {
+    id: 19,
+    name: 'Ren',
+    description: 'Ren is an open protocol that enables the permissionless and private transfer of value between any blockchain.',
+    logo: '/assets/project-logos/ren-logo.png',
+    url: 'https://renproject.io',
+    contractAddress: '0x408e41876cccdc0f92210600ef50372656052a38'
+  },
+  yamFinance: {
+    id: 20,
+    name: 'Yam Finance',
+    description: 'Yam Finance is a decentralized cryptocurrency that uses a rebasing mechanism to raise funds for a treasury managed by the community.',
+    logo: '/assets/project-logos/yamFinance-logo.png',
+    url: 'https://yam.finance',
+    contractAddress: '0x0AaCfbeC6a24756c20D41914F2caba817C0d8521'
+  },
 }
