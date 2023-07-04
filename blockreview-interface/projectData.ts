@@ -161,4 +161,188 @@ export const PROJECT_DATA: Record<string, Project> = {
     url: 'https://yam.finance',
     contractAddress: '0x0AaCfbeC6a24756c20D41914F2caba817C0d8521'
   },
+  ampleforth: {
+    id: 21,
+    name: 'Ampleforth',
+    description: 'Ampleforth is a digital-asset-protocol for smart commodity-money.',
+    logo: '/assets/project-logos/ampleforth-logo.png',
+    url: 'https://www.ampleforth.org',
+    contractAddress: '0xD46bA6D942050d489DBd938a2C909A5d5039A161'
+  },
+  umaproject: {
+    id: 22,
+    name: 'UMA',
+    description: 'UMA is a decentralized financial contracts platform built to enable Universal Market Access.',
+    logo: '/assets/project-logos/umaproject-logo.png',
+    url: 'https://umaproject.org',
+    contractAddress: '0x04Fa0d235C4abf4BcF4787aF4CF447DE572eF828'
+  },
+  radicle: {
+    id: 23,
+    name: 'Radicle',
+    description: 'A peer-to-peer stack for code collaboration',
+    logo: '/assets/project-logos/radicle-logo.png',
+    url: 'https://radicle.xyz/',
+    contractAddress: '0x31c8eacbffdd875c74b94b077895bd78cf1e64a3'
+  },
+  loopring: {
+    id: 24,
+    name: 'Loopring',
+    description: 'Loopring is a decentralized automated execution system that trades across the crypto-token exchanges.',
+    logo: '/assets/project-logos/loopring-logo.png',
+    url: 'https://loopring.org',
+    contractAddress: '0xBBbbCA6A901c926F240b89EacB641d8Aec7AEafD'
+  },
+  tornadoCash: {
+    id: 25,
+    name: 'Tornado Cash',
+    description: 'A fully decentralized protocol for private transactions on Ethereum.',
+    logo: '/assets/project-logos/tornadoCash-logo.png',
+    url: 'https://tornado.cash/',
+    contractAddress: '0x746a07e1a2ee4059d6f07f740bcca90ec505f3c8'
+  },
+  thegraph: {
+    id: 26,
+    name: 'The Graph',
+    description: 'The Graph is an indexing protocol for querying networks like Ethereum and IPFS.',
+    logo: '/assets/project-logos/thegraph-logo.png',
+    url: 'https://thegraph.com',
+    contractAddress: '0xc944e90c64b2c07662a292be6244bdf05cda44a7'
+  },
+  dydx: {
+    id: 27,
+    name: 'dYdX',
+    description: 'dYdX is a protocol that allows users to trade and lend any Ethereum token.',
+    logo: '/assets/project-logos/dydx-logo.png',
+    url: 'https://dydx.exchange',
+    contractAddress: '0x92d6c1e31e14520e676a687f0a93788b716beff5'
+  },
+  badgerdao: {
+    id: 28,
+    name: 'Badger DAO',
+    description: 'Badger DAO is a decentralized autonomous organization (DAO) built to bring Bitcoin to DeFi.',
+    logo: '/assets/project-logos/badgerdao-logo.webp',
+    url: 'https://badger.finance',
+    contractAddress: '0x3472a5a71965499acd81997a54bba8d852c6e53d'
+  },
+  hegic: {
+    id: 29,
+    name: 'Hegic',
+    description: 'Hegic is an on-chain options trading protocol on Ethereum.',
+    logo: '/assets/project-logos/hegic-logo.webp',
+    url: 'https://www.hegic.co',
+    contractAddress: '0x584bC13c7D411c00c01A62e8019472dE68768430'
+  },
+  mirrorprotocol: {
+    id: 30,
+    name: 'Mirror Protocol',
+    description: 'Mirror Protocol allows the creation of fungible assets, "synthetics", that track the price of real world assets.',
+    logo: '/assets/project-logos/mirrorprotocol-logo.png',
+    url: 'https://mirror.finance',
+    contractAddress: '0x09a3ecafa817268f77be1283176b946c4ff2e608'
+  },
+  creamfinance: {
+    id: 31,
+    name: 'Cream Finance',
+    description: 'Cream Finance is a decentralized peer to peer lending platform.',
+    logo: '/assets/project-logos/creamfinance-logo.png',
+    url: 'https://cream.finance',
+    contractAddress: '0x2ba592f78db6436527729929aaf6c908497cb200'
+  },
+  rarible: {
+    id: 32,
+    name: 'Rarible',
+    description: 'Rarible is a software allowing digital artists and creators to issue and sell custom crypto assets that represent ownership in their digital work.',
+    logo: '/assets/project-logos/rarible-logo.png',
+    url: 'https://rarible.com',
+    contractAddress: '0xfca59cd816ab1ead66534d82bc21e7515ce441cf'
+  },
+  opensea: {
+    id: 33,
+    name: 'OpenSea',
+    description: 'OpenSea is a marketplace for crypto collectibles and non-fungible tokens (NFTs).',
+    logo: '/assets/project-logos/opensea-logo.png',
+    url: 'https://opensea.io',
+    contractAddress: '0x7Be8076f4EA4A4AD08075C2508e481d6C946D12b'
+  },
+  ensdomains: {
+    id: 34,
+    name: 'ENS Domains',
+    description: 'Ethereum Name Service (ENS) offers a secure & decentralized way to address resources both on and off the blockchain using simple, human-readable names.',
+    logo: '/assets/project-logos/ensdomains-logo.png',
+    url: 'https://ens.domains',
+    contractAddress: '0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85'
+  },
+  nexusmutual: {
+    id: 35,
+    name: 'Nexus Mutual',
+    description: 'Nexus Mutual offers a decentralized alternative to insurance.',
+    logo: '/assets/project-logos/nexusmutual-logo.png',
+    url: 'https://nexusmutual.io',
+    contractAddress: '0xd7c49cee7e9188cca6ad8ff264c1da2e69d4cf3b'
+  },
+  mstable: {
+    id: 36,
+    name: 'mStable',
+    description: 'mStable unites stablecoins, lending and swapping into one standard.',
+    logo: '/assets/project-logos/mstable-logo.png',
+    url: 'https://mstable.org',
+    contractAddress: '0xa3bed4e1c75d00fa6f4e5e6922db7261b5e9acd2'
+  },
+  keepnetwork: {
+    id: 37,
+    name: 'Keep Network',
+    description: "Keep Network's off-chain containers for private data, known as keeps, help contracts harness the full power of the public blockchain.",
+    logo: '/assets/project-logos/keepnetwork-logo.png',
+    url: 'https://keep.network',
+    contractAddress: '0x85eee30c52b0b379b046fb0f85f4f3dc3009afec'
+  },
+  augur: {
+    id: 38,
+    name: 'Augur',
+    description: 'Augur is a decentralized oracle and peer to peer protocol for prediction markets.',
+    logo: '/assets/project-logos/augur-logo.png',
+    url: 'https://www.augur.net',
+    contractAddress: '0x221657776846890989a759ba2973e427dff5c9bb'
+  },
+  gelato: {
+    id: 39,
+    name: 'Gelato Network',
+    description: 'Gelato Network is the first protocol that automates smart contract executions on Ethereum, enabling developers to create more complex dApps.',
+    logo: '/assets/project-logos/gelato-logo.png',
+    url: 'https://www.gelato.network',
+    contractAddress: '0x3b44e6d4d076462a3bb777744b6688032b50076a'
+  },
+  gnosis: {
+    id: 40,
+    name: 'Gnosis',
+    description: 'Gnosis builds new market mechanisms to enable the distribution of resources—from assets to incentives, and information to ideas.',
+    logo: '/assets/project-logos/gnosis-logo.png',
+    url: 'https://gnosis.io',
+    contractAddress: '0x6810e776880c02933d47db1b9fc05908e5386b96'
+  },
+  usdc: {
+    id: 41,
+    name: 'USD Coin (USDC)',
+    description: 'USD Coin (USDC) is a type of cryptocurrency that is referred to as a stablecoin. It is pegged to the US Dollar and maintains a 1-to-1 ratio with the US Dollar in terms of value.',
+    logo: '/assets/project-logos/usdc-logo.png',
+    url: 'https://www.centre.io/usdc',
+    contractAddress: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+  },
+  dai: {
+    id: 42,
+    name: 'Dai',
+    description: 'Dai is a stablecoin that aims to keep its value as close to one United States dollar (USD) as possible through an automated system of smart contracts on the Ethereum blockchain.',
+    logo: '/assets/project-logos/dai-logo.png',
+    url: 'https://makerdao.com/en/dai/',
+    contractAddress: '0x6b175474e89094c44da98b954eedeac495271d0f'
+  },
+  wbtc: {
+    id: 43,
+    name: 'Wrapped Bitcoin (WBTC)',
+    description: 'Wrapped Bitcoin (WBTC) is an ERC-20 token that represents Bitcoin (BTC) on the Ethereum blockchain.',
+    logo: '/assets/project-logos/wbtc-logo.png',
+    url: 'https://www.wbtc.network/',
+    contractAddress: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599'
+  },
 }
